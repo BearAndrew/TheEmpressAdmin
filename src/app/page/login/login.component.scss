@@ -1,0 +1,75 @@
+#intro {
+  background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+  height: 100vh;
+}
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+  #intro {
+    margin-top: -58.59px;
+  }
+}
+
+.navbar .nav-link {
+  color: #fff !important;
+}
+
+
+.line-text {
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.line-text span {
+  display: block;
+  font-size: 1rem;
+  color: #aaa;
+  position: relative;
+}
+
+.line-text span::after, .line-text span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  background: #aaa;
+  width: calc(50% - 3.5rem);
+  height: 1px;
+}
+
+.line-text span::before {
+  left: 0;
+}
+
+.line-text span::after {
+  right: 0;
+}
+
+
+.btn-google-plus {
+  color: #fff;
+  background-color: #d34836;
+  border-color: #d34836;
+}
+
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.btn-brand {
+  position: relative;
+
+  i {
+    display: inline-block;
+    position: absolute;
+    left: 0.5rem;
+    width: 2rem;
+    margin: -0.5rem -0.5rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0.25rem;
+  }
+}

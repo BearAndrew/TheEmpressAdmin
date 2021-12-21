@@ -1,0 +1,23 @@
+/* Carousel styling */
+#introCarousel,
+.carousel-inner,
+.carousel-item,
+.carousel-item.active {
+  height: 100vh;
+}
+
+
+:host ::ng-deep {
+  .carousel-inner {
+    img {
+      height: 100vh;
+      object-fit: cover
+    }
+  }
+}
+
+
+.card {
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  border: 0;
+}

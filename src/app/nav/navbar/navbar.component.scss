@@ -1,0 +1,17 @@
+.navbar {
+  z-index: 999;
+}
+
+.link-icon {
+  position: relative;
+  z-index: -1;
+}
+
+.link-badge {
+  z-index: -1;
+}
+
+.dropdown-menu {
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  border: 0;
+}

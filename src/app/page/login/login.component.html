@@ -1,0 +1,71 @@
+<!-- Background image -->
+<div id="intro" class="bg-image shadow-2-strong">
+  <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-5 col-md-8">
+          <form class="bg-white rounded shadow-5-strong p-4 p-md-5">
+            <!-- Email input -->
+            <mdb-form-control class="mb-4">
+              <input mdbInput type="text" id="email" class="form-control" />
+              <label mdbLabel class="form-label" for="email">電子郵件</label>
+            </mdb-form-control>
+
+            <!-- Password input -->
+            <mdb-form-control class="mb-4">
+              <input mdbInput type="password" id="password" class="form-control" />
+              <label mdbLabel class="form-label" for="password">密碼</label>
+            </mdb-form-control>
+
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4">
+              <div class="col">
+                <!-- Checkbox -->
+                <div class="input-group">
+                  <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                  <label class="form-check-label px-2" for="form1Example3">
+                    記住我
+                  </label>
+                </div>
+              </div>
+
+              <div class="col text-end">
+                <!-- Simple link -->
+                <a>忘記密碼?</a>
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-2">登入</button>
+
+            <div class="row mb-2">
+              <div class="col">
+                <div class="line-text">
+                  <span>其他方式登入</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-12 mb-1">
+                <button type="button" class="btn btn-brand btn-block btn-google-plus mr-1" style="margin-bottom: 4px" (click)="providerLogin('google')">
+                  <i class="fab fa-google"></i>
+                  <span>Google+</span>
+                </button>
+              </div>
+
+              <div class="col-md-6 col-12 mb-1">
+                <button type="button" class="btn btn-brand btn-block btn-facebook mr-1" style="margin-bottom: 4px" (click)="providerLogin('fb')">
+                  <i class="fab fa-facebook-f"></i>
+                  <span>Facebook</span>
+                </button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Background image -->
