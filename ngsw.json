@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1640333868047,
+  "timestamp": 1640336005122,
   "index": "/TheEmpressAdmin/index.html",
   "assetGroups": [
     {
@@ -14,7 +14,7 @@
         "/TheEmpressAdmin/favicon.ico",
         "/TheEmpressAdmin/firebase-messaging-sw.js",
         "/TheEmpressAdmin/index.html",
-        "/TheEmpressAdmin/main.969a6b62db980a0678dc.js",
+        "/TheEmpressAdmin/main.a9c204b6b0fb82b05c99.js",
         "/TheEmpressAdmin/manifest.webmanifest",
         "/TheEmpressAdmin/polyfills.8c151b8375e767ff858f.js",
         "/TheEmpressAdmin/runtime.0e49e2b53282f40c8925.js",
@@ -86,8 +86,8 @@
     "/TheEmpressAdmin/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
     "/TheEmpressAdmin/firebase-messaging-sw.js": "d873d81c8e89a1fa5e8e33a2d6646359b3d3703b",
     "/TheEmpressAdmin/hue.f8505bd4d6f3e3aa435b.png": "f81ae627637a684614aa726e206c73ce099a01fd",
-    "/TheEmpressAdmin/index.html": "1fad0d2e5b12c4a9f780bac3a581e5154b1e8252",
-    "/TheEmpressAdmin/main.969a6b62db980a0678dc.js": "eb4abe612322da42c067709ec635d9b4480ea17f",
+    "/TheEmpressAdmin/index.html": "cc1a427e3e394def8d4a7a7141492bfa02632307",
+    "/TheEmpressAdmin/main.a9c204b6b0fb82b05c99.js": "9cd01ad9e97fa42c6bac02d94f02334c71daf403",
     "/TheEmpressAdmin/manifest.webmanifest": "dd4fcb52588cada03698fcc5ac52bffa0eb4a474",
     "/TheEmpressAdmin/password-meter.eea288d50533d7995ec1.png": "e0e101bd2a1cbda41398b48a4ab1792d89cb7334",
     "/TheEmpressAdmin/polyfills.8c151b8375e767ff858f.js": "763cd3b34dfa4600ebb9d9588ec7116988e98920",

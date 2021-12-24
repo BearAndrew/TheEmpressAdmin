@@ -11,7 +11,15 @@
   <meta name="theme-color" content="#1976d2">
 <link rel="stylesheet" href="styles.8903511f82f7d3f94412.css"></head>
 <body>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('flutter-first-frame', function () {
+        //navigator.serviceWorker.register('flutter_service_worker.js');
+        navigator.serviceWorker.register('firebase-messaging-sw.js');
+      });
+    }
+  </script>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
-<script src="runtime.0e49e2b53282f40c8925.js" defer=""></script><script src="polyfills.8c151b8375e767ff858f.js" defer=""></script><script src="main.969a6b62db980a0678dc.js" defer=""></script></body>
+<script src="runtime.0e49e2b53282f40c8925.js" defer=""></script><script src="polyfills.8c151b8375e767ff858f.js" defer=""></script><script src="main.a9c204b6b0fb82b05c99.js" defer=""></script></body>
 </html>
