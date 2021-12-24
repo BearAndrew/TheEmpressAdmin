@@ -1,11 +1,12 @@
 {
-  "name": "mdb-angular-ui-kit-free",
-  "short_name": "mdb-angular-ui-kit-free",
+  "short_name": "The Empress",
+  "name": "The Empress",
+  "start_url": "/?utm_source=homescreen",
+  "gcm_sender_id": "103953800507",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "./",
-  "start_url": "./",
+  "scope": "./TheEmpressAdmin",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
