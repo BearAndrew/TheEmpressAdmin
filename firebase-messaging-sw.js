@@ -24,7 +24,7 @@
  // [END initialize_firebase_in_sw]
 
  if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('firebase-messaging-sw.js', {scope: '/TheEmpressAdmin/'})
+  navigator.serviceWorker.register('firebase-messaging-sw.js', {scope: '../TheEmpressAdmin/'})
     .then(function(registration) {
       console.log('Registration successful, scope is:', registration.scope);
     }).catch(function(err) {
