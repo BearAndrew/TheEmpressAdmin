@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1640339017873,
+  "timestamp": 1640745558206,
   "index": "/TheEmpressAdmin/index.html",
   "assetGroups": [
     {
@@ -11,13 +11,14 @@
         "ignoreVary": true
       },
       "urls": [
+        "/TheEmpressAdmin/4.20cd0bc80546783903b2.js",
         "/TheEmpressAdmin/favicon.ico",
         "/TheEmpressAdmin/firebase-messaging-sw.js",
         "/TheEmpressAdmin/index.html",
-        "/TheEmpressAdmin/main.fa23ab2161114d690ff3.js",
+        "/TheEmpressAdmin/main.8c82a300df14ccb11b61.js",
         "/TheEmpressAdmin/manifest.webmanifest",
         "/TheEmpressAdmin/polyfills.8c151b8375e767ff858f.js",
-        "/TheEmpressAdmin/runtime.0e49e2b53282f40c8925.js",
+        "/TheEmpressAdmin/runtime.6ea1abe5c60381c30079.js",
         "/TheEmpressAdmin/styles.8903511f82f7d3f94412.css"
       ],
       "patterns": []
@@ -62,6 +63,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
+    "/TheEmpressAdmin/4.20cd0bc80546783903b2.js": "abd42791d89f504ded5590ede598ca1a10108f33",
     "/TheEmpressAdmin/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/TheEmpressAdmin/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
     "/TheEmpressAdmin/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
@@ -84,17 +86,17 @@
     "/TheEmpressAdmin/fa-solid-900.be9ee23c0c6390141475.ttf": "eb8914f6b1797b45ee0883e6089d92695d9f9441",
     "/TheEmpressAdmin/fa-solid-900.eeccf4f66002c6f2ba24.woff": "a22acd7697f36e7d4cc31a853c70e776eac54bb1",
     "/TheEmpressAdmin/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "/TheEmpressAdmin/firebase-messaging-sw.js": "448f0404102583f21395d1bcceba92eb1775d181",
+    "/TheEmpressAdmin/firebase-messaging-sw.js": "d873d81c8e89a1fa5e8e33a2d6646359b3d3703b",
     "/TheEmpressAdmin/hue.f8505bd4d6f3e3aa435b.png": "f81ae627637a684614aa726e206c73ce099a01fd",
-    "/TheEmpressAdmin/index.html": "9f625a664c7e32dec1ab02f136334352e0f6dd44",
-    "/TheEmpressAdmin/main.fa23ab2161114d690ff3.js": "69e9c515e50b1f1b939c57ab92d2195bdf8cd727",
+    "/TheEmpressAdmin/index.html": "33790bc519d7862c4ba2902169cbfaae2e2722ba",
+    "/TheEmpressAdmin/main.8c82a300df14ccb11b61.js": "27e6367075ad5c05c721d7e5565f691027e0fdc6",
     "/TheEmpressAdmin/manifest.webmanifest": "f3eecc294304f85951d4bce46fa311cb056563f4",
     "/TheEmpressAdmin/password-meter.eea288d50533d7995ec1.png": "e0e101bd2a1cbda41398b48a4ab1792d89cb7334",
     "/TheEmpressAdmin/polyfills.8c151b8375e767ff858f.js": "763cd3b34dfa4600ebb9d9588ec7116988e98920",
     "/TheEmpressAdmin/primeicons.3a0d4a58da62cf7c55bb.ttf": "13889b5e1915891dd548d6b71c1cccddb469e13d",
     "/TheEmpressAdmin/primeicons.c55d94a248721abbd220.svg": "4a2c5258656a8b900ddeabf5ac62aace724f5a0d",
     "/TheEmpressAdmin/primeicons.e61f3495a7ecd3d571a4.woff": "d65c561bf2d7b6707c3912d8987273a9c715b7f2",
-    "/TheEmpressAdmin/runtime.0e49e2b53282f40c8925.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/TheEmpressAdmin/runtime.6ea1abe5c60381c30079.js": "47c60b9bea5c0f498911737113ff9a3c1cd32f38",
     "/TheEmpressAdmin/styles.8903511f82f7d3f94412.css": "cc80636d1c96b92afbde56bc2420faeb484156af"
   },
   "navigationUrls": [

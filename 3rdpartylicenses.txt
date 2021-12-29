@@ -35,6 +35,8 @@ MIT
 @angular/fire
 MIT
 
+@angular/fire/messaging
+
 @angular/forms
 MIT
 
@@ -325,6 +327,8 @@ Apache-2.0
 firebase/app
 
 firebase/firestore
+
+firebase/messaging
 
 idb
 ISC
