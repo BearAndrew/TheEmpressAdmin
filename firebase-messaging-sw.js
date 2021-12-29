@@ -23,14 +23,19 @@
  const messaging = firebase.messaging();
  // [END initialize_firebase_in_sw]
 
- if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('firebase-messaging-sw.js', {scope: '../TheEmpressAdmin/'})
-    .then(function(registration) {
-      console.log('Registration successful, scope is:', registration.scope);
-    }).catch(function(err) {
-      console.log('Service worker registration failed, error:', err);
-    });
-  }
+ messaging
+ .requestPermission()
+ .then(function () {
+   console.log("Have permission");
+   if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('firebase-messaging-sw.js', {scope: '../TheEmpressAdmin/'})
+      .then(function(registration) {
+        console.log('Registration successful, scope is:', registration.scope);
+      }).catch(function(err) {
+        console.log('Service worker registration failed, error:', err);
+      });
+    }
+});
 
  //#region notifiction點擊事件
  var click_action;
