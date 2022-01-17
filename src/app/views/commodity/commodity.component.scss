@@ -1,0 +1,152 @@
+@import 'src/scss/variables';
+
+$table-rwd-width: 640px;
+
+#productImgFU {
+  display: none;
+}
+
+
+:host ::ng-deep {
+  // carousel
+  .p-carousel {
+    margin-top: 30px;
+
+    &-container {
+      height: 175px;
+    }
+
+    &-items-content {
+      display: flex;
+    }
+
+    &-item {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        height: 90%;
+        width: 90%;
+        object-fit: cover;
+        pointer-events: none
+      }
+    }
+  }
+
+  // table
+  .p-datatable-wrapper {
+    min-height: 200px;
+  }
+}
+
+.product-img-upload {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-preview {
+    all: inherit;
+    position: relative;
+    width: 100%;
+
+    button {
+      position: absolute;
+      right: 0;
+      height: 40px;
+      width: 40px;
+    }
+    &-remove {
+      &::before {
+        content: '';
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        height: 50px;
+        width: 50px;
+        background-color: white;
+        border-radius: 50%;
+      }
+      button {
+        top: 0;
+        padding: 10px 15px;
+        box-shadow: none;
+      }
+    }
+    &-edit {
+      bottom: 0;
+      padding: 10px 13px;
+    }
+  }
+
+  &-default {
+    border: 5px dashed lightgray;
+    border-radius: 5px;
+    height: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+
+    &-icon {
+      text-align: center;
+
+      i {
+        color: lightgray;
+      }
+      span {
+        color: gray;
+      }
+    }
+  }
+}
+
+
+.table-img-container{
+  height: 70px;
+
+  @media (max-width: $table-rwd-width) {
+    height: 150px;
+  }
+
+  .table-img-template {
+    flex: 1;
+    .table-img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+
+      @media (max-width: $table-rwd-width) {
+        max-width: 70%;
+        height: 100%;
+        max-height: 150px;
+      }
+    }
+
+    i {
+      color: lightgray;
+      font-size: 64px;
+      @media (max-width: $table-rwd-width) {
+        font-size: 96px;
+      }
+    }
+  }
+}
+
+.table-d-com {
+  @media (max-width: $table-rwd-width) {
+    display: none !important;
+  }
+}
+
+.table-d-mobile {
+  @media (min-width: $table-rwd-width) {
+    display: none !important;
+  }
+}
+
+.operateBtns {
+  width: 40px;
+}

@@ -1,0 +1,20 @@
+// float button
+.btn-float{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:30px;
+	right:30px;
+	color:#FFF;
+	border-radius:50%;
+	text-align:center;
+  box-shadow: 0px 0px 5px rgb(128, 128, 128);
+  z-index: 999;
+
+  i {
+    font-size: 1.5rem;
+  }
+}

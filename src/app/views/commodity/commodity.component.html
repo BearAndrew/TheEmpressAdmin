@@ -1,0 +1,187 @@
+<h1 class="bold p-m-0">商品管理</h1>
+
+<div class="card animated fadeIn">
+    <!-- <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedProducts()" [disabled]="!selectedProducts || !selectedProducts.length"></button>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+            <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+        </ng-template>
+    </p-toolbar> -->
+
+    <p-table #dt [value]="products" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"
+        [pageLinks]="0" [showJumpToPageDropdown]="true" (onPage)="pageChange()"
+        [responsive]="true" responsiveLayout="stack" styleClass="p-datatable-striped"
+        [(selection)]="selectedProducts" [rowHover]="true" dataKey="id">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="搜尋..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th>圖片</th>
+                <th pSortableColumn="name">名稱 <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="price">價格 <p-sortIcon field="price"></p-sortIcon></th>
+                <th pSortableColumn="category">種類 <p-sortIcon field="category"></p-sortIcon></th>
+                <!-- <th pSortableColumn="rating">評分 <p-sortIcon field="rating"></p-sortIcon></th> -->
+                <th pSortableColumn="inventoryStatus">庫存狀態 <p-sortIcon field="inventoryStatus"></p-sortIcon></th>
+                <th style="width: 80px;"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td class="table-d-com">
+                    <p-tableCheckbox [value]="product"></p-tableCheckbox>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-center align-items-center table-img-container">
+                    <div class="table-img-template d-flex justify-content-center align-items-center">
+                      <img *ngIf="product.imageList[0]"
+                      src="data:image/png;base64,{{product.imageList[0]}}"class="shadow-4 table-img"/>
+                      <i *ngIf="!product.imageList[0]" class="far fa-image"></i>
+                    </div>
+                    <div class="table-d-mobile">
+                      <ng-template [ngTemplateOutlet]="operateBtns"></ng-template>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="p-column-title">名稱</span>{{product.name}}</td>
+                <td><span class="p-column-title">價格</span>
+                  {{product.price | currency:'TWD':'symbol':'1.0-0'}}
+                </td>
+                <td><span class="p-column-title">種類</span>{{product.category}}</td>
+                <!-- <td><p-rating [ngModel]="product.rating" ngDefaultControl [readonly]="true" [cancel]="false"></p-rating></td> -->
+                <td>
+                  <span class="p-column-title">庫存狀態</span>
+                  <span [class]="'product-badge status-' + (product.inventoryStatus ? product.inventoryStatus.toLowerCase() : '')">
+                  {{product.inventoryStatus}}</span></td>
+                <td>
+                  <ng-template #operateBtns>
+                    <div class="operateBtns">
+                      <button type="button" class="btn btn-primary btn-floating m-1" (click)="editProduct(product)">
+                        <i class="fas fa-pencil-alt"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger btn-floating m-1" (click)="deleteProduct(product)">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </div>
+                  </ng-template>
+                  <div class="table-d-com">
+                    <ng-template [ngTemplateOutlet]="operateBtns"></ng-template>
+                  </div>
+                </td>
+            </tr>
+        </ng-template>
+        <!-- <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{products ? products.length : 0 }} products.
+            </div>
+        </ng-template> -->
+    </p-table>
+    <ngx-spinner name='table' bdColor = "rgba(0, 0, 0, 0.2)" size = "large" color = "#ffffff" type = "ball-spin-clockwise" [fullScreen] = "false"></ngx-spinner>
+</div>
+
+<p-dialog [(visible)]="productDialog" [style]="{width: '600px', margin: '0 15px'}" header="商品資訊" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-fileUpload #productImgFU id="productImgFU" accept="image/*" [maxFileSize]="5000000" class="p-mr-2 p-d-inline-block" multiple="true"
+          (onClear)="null" (onSelect)="productImgFUChange($event)"></p-fileUpload>
+        <div class="product-img-upload mb-2">
+          <div *ngIf="product.imageList.length > 0" class="product-img-upload-preview">
+            <p-carousel [value]="product.imageList" [numVisible]="1" [numScroll]="1" [circular]="product.imageList.length != 1">
+              <div class="product-img-upload-preview-remove"><i class="fas fa-2x fa-times-circle"></i></div>
+              <ng-template let-showPhoto pTemplate="item">
+                <img src="data:image/png;base64,{{showPhoto}}" class="shadow-4"/>
+                <div class="product-img-upload-preview-remove">
+                  <button pButton pRipple type="button" icon="pi pi-times" (click)="removeImg(showPhoto)"
+                    class="p-button-rounded p-button-secondary"></button>
+                </div>
+              </ng-template>
+            </p-carousel>
+            <button class="product-img-upload-preview-edit btn btn-primary" (click)="chooseImgFU()">
+              <i class="fas fa-upload"></i>
+            </button>
+          </div>
+
+          <div *ngIf="product.imageList.length == 0" class="product-img-upload-default" (click)="chooseImgFU()">
+            <div class="product-img-upload-default-icon">
+              <i class="far fa-5x fa-image"></i><br>
+              <span>上傳圖片</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-field">
+            <label for="name">名稱</label>
+            <input type="text" pInputText id="name" [(ngModel)]="product.name" ngDefaultControl required autofocus />
+            <small class="p-error" *ngIf="submitted && !product.name">Name is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="description">描述</label>
+            <textarea id="description" pInputTextarea [(ngModel)]="product.description" ngDefaultControl required rows="3" cols="20"></textarea>
+        </div>
+        <div class="p-field">
+            <label for="inventoryStatus">庫存狀態</label>
+            <p-dropdown [(ngModel)]="product.inventoryStatus" ngDefaultControl inputId="inventoryStatus" [options]="statuses" placeholder="Select">
+                <ng-template let-option pTemplate="item">
+                    <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+                </ng-template>
+            </p-dropdown>
+        </div>
+
+        <div class="p-field">
+            <label class="p-mb-3">種類</label>
+            <div class="p-formgrid p-grid">
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category1" name="category" value="Accessories" [(ngModel)]="product.category" ngDefaultControl></p-radioButton>
+                    <label for="category1">Accessories</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category2" name="category" value="Clothing" [(ngModel)]="product.category" ngDefaultControl></p-radioButton>
+                    <label for="category2">Clothing</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category3" name="category" value="Electronics" [(ngModel)]="product.category" ngDefaultControl></p-radioButton>
+                    <label for="category3">Electronics</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category4" name="category" value="Fitness" [(ngModel)]="product.category" ngDefaultControl></p-radioButton>
+                    <label for="category4">Fitness</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="price">價格</label>
+                <p-inputNumber id="price" [(ngModel)]="product.price" ngDefaultControl mode="currency" currency="TWD"
+                  [minFractionDigits]="0"></p-inputNumber>
+            </div>
+            <div class="p-field p-col">
+                <label for="quantity">庫存數量</label>
+                <p-inputNumber id="quantity" [(ngModel)]="product.quantity" ngDefaultControl></p-inputNumber>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="取消" icon="pi pi-times" class="p-button-text p-button-danger" (click)="hideDialog()"></button>
+        <button pButton pRipple label="完成" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '600px'}"></p-confirmDialog>
+
+<div>
+  <button class="btn btn-float bg-success" (click)="openNew()"><i class="fa fa-plus"></i></button>
+</div>

@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { ToastType } from './../_interface/manager/manager.interface';
+import { ManagerService } from './manager.service';
+import { Injectable, NgZone } from '@angular/core';
 import * as firebase from 'firebase';
 import { environment } from './../../environments/environment.prod';
 import { BehaviorSubject } from 'rxjs';
@@ -18,6 +20,7 @@ export class CloudMessageService {
 
   //private _auth: AuthService,private _http: BaseHttpService
   constructor(
+    private managerService: ManagerService,
     private firestore: AngularFirestore,
     private authenticationService: AuthenticationService) {
     //初始化 Firebase
@@ -27,38 +30,50 @@ export class CloudMessageService {
       firebase.app(); // if already initialized, use that one
     }
 
-    this.messaging = firebase.messaging();
-    //Token更新事件
-    this.messaging.onTokenRefresh(() => {
-      this.messaging.getToken().then((refreshedToken) => {
-        console.log(`Token更新觸發:${refreshedToken}`);
-        this.updateToken(refreshedToken);
+    // 檢查是否支援 firebase messaging
+    if (firebase.messaging.isSupported()) {
+      this.messaging = firebase.messaging();
+    }
 
-      }).catch((err) => {
-        console.log('無法取得更新Token', err);
+
+    if (this.messaging) {
+      //Token更新事件
+      this.messaging.onTokenRefresh(() => {
+        this.messaging.getToken().then((refreshedToken) => {
+          console.log(`Token更新觸發:${refreshedToken}`);
+          this.updateToken(refreshedToken);
+
+        }).catch((err) => {
+          console.log('無法取得更新Token', err);
+        });
       });
-    });
-    //收到訊息事件(前景)
-    this.messaging.onMessage((payload) => {
-      console.log('收到訊息:', payload);
-      this.currentMessage.next(payload);
-    });
+      //收到訊息事件(前景)
+      this.messaging.onMessage((payload) => {
+        console.log('收到訊息:', payload);
+        this.currentMessage.next(payload);
+      });
+    }
 
   }
 
   //要求同意推播授權
   getPermission() {
-    this.messaging.requestPermission()
+    if (this.messaging) {
+      this.messaging.requestPermission()
       .then(() => {
-        console.log('允許推播!');
         return this.messaging.getToken();
       })
       .then(token => {
+        console.log('允許推播!');
+        this.managerService.setToast({detail: '推播開啟', summary: ToastType.success});
         this.updateToken(token);
       })
       .catch((err) => {
         console.log('不允許推播', err);
       });
+    } else {
+      this.managerService.setToast({detail: '不支援推播', summary: ToastType.error});
+    }
   }
 
   //更新Token

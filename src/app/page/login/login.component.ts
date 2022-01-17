@@ -1,3 +1,4 @@
+import { ManagerService } from './../../_service/manager.service';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, AbstractControl, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../../_service/authentication.service';
@@ -5,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router, RouterStateSnapshot } from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { MessageService } from 'primeng/api';
-import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,20 +33,23 @@ export class LoginComponent implements OnInit, OnDestroy {
   disableLoginBtn = false;
 
   // different-credential-modal
-  isDiffCredProvier;
-  diffCredEmail;
-  diffCredPw;
+  isDiffCredProvier: boolean; // 是否有不同驗證方式
+  diffCredEmail: string; // 不同驗證方式的 Email
+  diffCredPw: string; // 不同驗證方式的密碼
 
   private showLoginPageSub: Subscription;
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService,
+  constructor(private fb: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private managerService: ManagerService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private messageService: MessageService,
-    private primengConfig: PrimeNGConfig
-    ) {
+    private messageService: MessageService) {
+
+    this.managerService.setFullScreenSpinner(true);
     this.showLoginPageSub = authenticationService.showLoginPage().subscribe((data) => {
       this.isLoginCalled = data;
+      this.managerService.setFullScreenSpinner(false);
     });
   }
 

@@ -1,0 +1,15 @@
+@import "variables";
+
+[type=button] {
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+}
+
+.container {
+  padding: 30px;
+
+  @media (max-width: $md) {
+    padding: 15px
+  }
+}

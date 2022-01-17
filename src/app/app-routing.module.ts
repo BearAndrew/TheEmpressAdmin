@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 import { AppComponent } from './app.component';
-import { ContainerComponent } from './container/container/container.component';
-import { HomeComponent } from './view/home/home.component';
 import { LoginComponent } from './page/login/login.component';
-import { AuthGuard } from './auth/auth.guard';
+import { ContainerComponent } from './container/container/container.component';
+import { HomeComponent } from './views/home/home.component';
+import { CommodityComponent } from './views/commodity/commodity.component';
 
 
 
@@ -19,6 +20,9 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent
+      },{
+        path: 'commodity',
+        component: CommodityComponent
       },
     ]
   },
