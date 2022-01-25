@@ -27,8 +27,8 @@ $table-rwd-width: 640px;
       justify-content: center;
 
       img {
-        height: 90%;
-        width: 90%;
+        height: 95%;
+        width: 95%;
         object-fit: cover;
         pointer-events: none
       }
@@ -46,6 +46,7 @@ $table-rwd-width: 640px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   &-preview {
     all: inherit;
@@ -105,11 +106,6 @@ $table-rwd-width: 640px;
 
 
 .table-img-container{
-  height: 70px;
-
-  @media (max-width: $table-rwd-width) {
-    height: 150px;
-  }
 
   .table-img-template {
     flex: 1;
@@ -120,7 +116,7 @@ $table-rwd-width: 640px;
 
       @media (max-width: $table-rwd-width) {
         max-width: 70%;
-        height: 100%;
+        height: 150px;
         max-height: 150px;
       }
     }

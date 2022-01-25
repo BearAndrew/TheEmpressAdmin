@@ -159,12 +159,14 @@ export class CommodityComponent implements OnInit {
 
   // 等待全部照片 onload 完成才輸出 showPhotoList
   private getPhotoList(uploadPhotoList): Promise<string[]> {
+    this.managerService.spinnerStatus(true, 'image');
     return new Promise((resolve) => {
       // subject 觀察是否完成全部照片上傳
       const subject = new BehaviorSubject<number>(0);
       subject.subscribe(
         data => {
           if (data == this.productImgFU.files.length) {
+            this.managerService.spinnerStatus(false, 'image');
             this.productImgFU.files = [];
             resolve(uploadPhotoList);
             subject.complete;

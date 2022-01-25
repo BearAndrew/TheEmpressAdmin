@@ -89,7 +89,7 @@
             </div>
         </ng-template> -->
     </p-table>
-    <ngx-spinner name='table' bdColor = "rgba(0, 0, 0, 0.2)" size = "large" color = "#ffffff" type = "ball-spin-clockwise" [fullScreen] = "false"></ngx-spinner>
+    <ngx-spinner name='table' bdColor = "rgba(0, 0, 0, 0.15)" size = "large" color = "#ffffff" type = "ball-spin-clockwise" [fullScreen] = "false"></ngx-spinner>
 </div>
 
 <p-dialog [(visible)]="productDialog" [style]="{width: '600px', margin: '0 15px'}" header="商品資訊" [modal]="true" styleClass="p-fluid">
@@ -119,6 +119,9 @@
               <span>上傳圖片</span>
             </div>
           </div>
+
+          <ngx-spinner name='image' bdColor="rgba(0, 0, 0, 0.15)" size="large" color="#ffffff" type="ball-spin-clockwise" [fullScreen]="false"></ngx-spinner>
+
         </div>
 
         <div class="p-field">

@@ -13,21 +13,6 @@
   "storage": {
     "rules": "storage.rules"
   },
-  "headers": [
-    {
-      "source": "**/service-worker.js",
-      "headers": [
-        {
-          "key": "Service-Worker-Allowed",
-          "value": "/"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "no-cache"
-        }
-      ]
-    }
-  ],
   "hosting": {
     "public": "dist",
     "ignore": [
